@@ -6,7 +6,7 @@
 3. run `pre-commit install`
 4. run `nbstripout --install`
 5. run `dvc init`
-5. Adjust the `.dvc/config` to something like this:
+6. Adjust the `.dvc/config` to something like this:
 ```
 [core]
     remote = storage
@@ -14,11 +14,12 @@
 ['remote "storage"']
     url = s3://[PROJECT-S3-BUCKET]/dvcstore
 ```
-6. Adjust `dvc.yaml`. In most cases, you just have to adjust `cmd: python src/train.py` to something suitable for your project.
-7. Adjust `params.yaml`. Probably you want to leave it empty until you run your first experiment.
-8. Adjust `pyproject.toml` (`name`, `description`, `authors`, etc.)
-9. Install your dependencies (e.g. `poetry add pandas==1.5.2`)
-10. Run `dvc commit` and just ignore all warnings and error for now.
+7. Adjust `dvc.yaml`. In most cases, you just have to adjust `cmd: python src/train.py` to something suitable for your project.
+8. Adjust `params.yaml`. Probably you want to leave it empty until you run your first experiment.
+9. Adjust `pyproject.toml` (`name`, `description`, `authors`, etc.)
+10. Install your dependencies (e.g. `poetry add pandas==1.5.2`)
+11. Run `dvc commit` and just ignore all warnings and error for now.
+12. Commit to Git.
 
 ## Things to remember
 * Notebooks and code for research should be placed in a `research` folder.

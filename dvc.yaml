@@ -1,6 +1,6 @@
 stages:
   train:
-    cmd: python src/train.py
+    cmd: python src/ml_project_template/train.py
     deps:
     - data
     - src

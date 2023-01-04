@@ -1,0 +1,52 @@
+name: Testing
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: |
+          curl -O -sSL https://install.python-poetry.org/install-poetry.py
+          python install-poetry.py -y --version 1.3.1
+          echo "PATH=${HOME}/.poetry/bin:${PATH}" >> $GITHUB_ENV
+          rm install-poetry.py
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "poetry"
+      - name: Install dependencies and project
+        run: |
+          poetry env use ${{ matrix.python-version }}
+          poetry install --with test
+      - name: Check with isort
+        run: |
+          poetry run isort --check-only .
+      - name: Check with black
+        run: |
+          poetry run black --check ./src/ml_project_template  ./tests ./research
+      - name: Check with mypy
+        run: |
+          poetry run mypy --config-file=pyproject.toml .
+      - name: Check with bandit
+        run: |
+          poetry run bandit -r ./src/ml_project_template/*
+      - name: Lint with pylint
+        run: |
+          poetry run pylint --rcfile=pyproject.toml ./src/ml_project_template ./tests
+      - name: Test with pytest
+        run: |
+          poetry run pytest --cov src/ml_project_template --cov-report term-missing

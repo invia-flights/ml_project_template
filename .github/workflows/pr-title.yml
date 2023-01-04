@@ -1,0 +1,17 @@
+name: "PRTitle"
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: deepakputhraya/action-pr-title@master
+        with:
+          regex: "^(add:|build:|ci:|docs:|feat:|fix:|bug:|perf:|refactor:|research:|revert:|style:|test:|security:).{12,60}$"
+          min_length: 10
+          max_length: 60
+          github_token: "${{ secrets.GITHUB_TOKEN }}"

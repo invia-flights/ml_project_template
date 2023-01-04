@@ -3,7 +3,7 @@ name = "ml_project_template"
 version = "0.1.0"
 description = "This project can be used as a template for a Python machine learning project."
 authors = ["Your Name <you@example.com>"]
-packages = [{include = "src"}]
+packages = [{ include = "ml_project_template", from = "src" }]
 readme = "docs/README.md"
 documentation = ""
 repository = "https://github.com/invia-flights/ml_project_template"
@@ -20,22 +20,48 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+python = ">=3.10,<3.11"
+
+dask = "^2022.12.1"
+dask-ml = "^2022.5.27"
+fastparquet = "^2022.12.0"
+joblib = "^1.2.0"
+pandas = "^1.5.2"
+numpy = "1.23.5"
+sk-transformers = "^0.6.3"
+scikit-learn = "^1.2.0"
+typer = "^0.7.0"
+
+[tool.poetry.group.research.dependencies]
+blitzly = "^0.3.3"
+matplotlib = "^3.6.2"
+pandas-profiling = "^3.6.2"
+
 
 [tool.poetry.group.dev.dependencies]
-black = {extras = ["jupyter"], version = "^22.10.0"}
-isort = "^5.10.1"
+black = {extras = ["jupyter"], version = "^22.12.0"}
+bandit = "^1.7.4"
+isort = "^5.11.4"
 mypy = "^0.991"
-pylint = "^2.15.8"
-pytest = "^7.2.0"
-dvc-s3 = "2.21.0"
+pylint = "^2.15.9"
+pre-commit = "^2.21.0"
 nbstripout = "^0.6.1"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+
 [tool.poetry.group.dev]
+optional = false
+
+[tool.poetry.group.research]
+optional = false
+
+[tool.poetry.group.test]
 optional = true
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.4.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pylint.messages_control]
@@ -49,16 +75,24 @@ disable = [
     "R0916",
     ]
 
+[tool.pylint.format]
+max-line-length = 88
+
 [tool.mypy]
 strict = true
 disallow_subclassing_any = false
 ignore_missing_imports = true
 disallow_any_generics = false
 warn_return_any = false
-exclude = ["tests/*"]
+no_namespace_packages = true
+exclude = ["tests", "docs", "data", "models"]
 
-[tool.pylint.format]
-max-line-length = 88
+[tool.black]
+target-version = ['py311']
+
 
 [tool.isort]
 profile = "black"
+skip_glob = ["docs/*", "data/*", "models/*"]
+src_paths = ["src/ml_project_template", "research", "tests"]
+extend_skip = [".md", ".yaml", ".yml"]

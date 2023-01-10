@@ -9,7 +9,7 @@ Install dependencies:
 brew bundle
 ```
 
-Init DVCS:
+Init DVC:
 ```bash
 dvc init
 ```

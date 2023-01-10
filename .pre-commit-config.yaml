@@ -10,6 +10,7 @@ repos:
         args:
           [
             "add",
+            "dvc",
             "ci",
             "docs",
             "bug",
@@ -22,6 +23,7 @@ repos:
             "security",
             "perf",
             "resolve",
+            "maintain",
             "merge",
           ]
 

@@ -1,16 +1,16 @@
 stages:
   train:
-    cmd: python src/ml_project_template/train.py
+    cmd: python src/ml_project_template/training/train.py
     deps:
-    - data
-    - src
+      - data
+      - src
     params:
-    - params.yaml:
+      - params.yaml:
     outs:
-    - models
+      - models
     metrics:
-    - metrics.json:
-        cache: false
+      - logs/dvc/metrics.json:
+          cache: false
     plots:
-    - plots:
-        cache: false
+      - plots:
+          cache: false

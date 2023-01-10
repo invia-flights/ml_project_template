@@ -9,6 +9,11 @@ Install dependencies:
 brew bundle
 ```
 
+Init DVCS:
+```bash
+dvc init
+```
+
 Install the project:
 ```bash
 poetry install --with test

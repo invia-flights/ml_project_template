@@ -28,12 +28,12 @@ fastparquet = "^2022.12.0"
 joblib = "^1.2.0"
 pandas = "^1.5.2"
 numpy = "1.23.5"
-sk-transformers = "^0.6.3"
+sk-transformers = ">=0.7.3"
 scikit-learn = "^1.2.0"
 typer = "^0.7.0"
 
 [tool.poetry.group.research.dependencies]
-blitzly = "^0.3.3"
+blitzly = ">=0.5.0"
 matplotlib = "^3.6.2"
 pandas-profiling = "^3.6.2"
 

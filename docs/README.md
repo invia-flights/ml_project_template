@@ -42,7 +42,7 @@ nbstripout --install
 - [`dvc.yaml`](https://github.com/invia-flights/ml_project_template/blob/main/dvc.yaml): Contains DVC settings and pipelines
 - [`params.yaml`](https://github.com/invia-flights/ml_project_template/blob/main/params.yaml): Contains the parameters for the DVC experiments
 - [`pyproject.toml`](https://github.com/invia-flights/ml_project_template/blob/main/pyproject.toml): Contains all dependencies for the project as well as settings for tools like `black`, `isort`, etc.
-- [`.pre-commit-config.yaml`](https://github.com/invia-flights/ml_project_template/blob/main/params.yaml): Contains all pre-commit hooks for the project
+- [`.pre-commit-config.yaml`](https://github.com/invia-flights/ml_project_template/blob/main/.pre-commit-config.yaml): Contains all pre-commit hooks for the project
 
 ## GitHub Actions 🤖
 - [CodeQL](https://github.com/invia-flights/ml_project_template/blob/main/.github/workflows/codeql.yml): Runs CodeQL analysis on the project
